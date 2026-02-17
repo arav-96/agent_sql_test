@@ -1,13 +1,13 @@
 from planners.planner_runner import run_planner
 from planners.planner_validator import validate_plan
-from schemas.taxi_semantic_schema import TAXI_SEMANTIC_SCHEMA
+from schemas.healthcare_semantic_schema import HEALTHCARE_SCHEMA
 from utils.logger import get_logger
 
 logger = get_logger("planner_test")
 
 
 def run_and_validate(question: str):
-    plan = run_planner(question)
+    plan = run_planner(question, schema=HEALTHCARE_SCHEMA)
 
     # ----------------------------
     # 1. No response / hard failure
@@ -18,17 +18,18 @@ def run_and_validate(question: str):
         return
 
     # ----------------------------
-    # 2. Azure content filter
+    # 2. Planner returned structured error
     # ----------------------------
-    if plan.get("error") == "CONTENT_FILTERED":
-        logger.warning("PLANNER BLOCKED BY AZURE CONTENT FILTER")
+    if plan.get("error"):
+        logger.warning("PLANNER RETURNED ERROR")
         logger.warning(f"Question: {question}")
+        logger.warning(f"Plan/Error: {plan}")
         return
 
     # ----------------------------
     # 3. Validate planner output
     # ----------------------------
-    errors = validate_plan(plan, TAXI_SEMANTIC_SCHEMA)
+    errors = validate_plan(plan, HEALTHCARE_SCHEMA)
 
     metric = plan.get("metric", "")
 
@@ -51,3 +52,14 @@ def run_and_validate(question: str):
         logger.info("VALIDATION PASSED")
         logger.info(f"Question: {question}")
         logger.info(f"Plan: {plan}")
+
+
+if __name__ == "__main__":
+    test_questions = [
+        "What is the savings in the last month?",
+        "Why did audit volume drop in the last 3 months?",
+        "Show hit rate trend for the last 3 months by provider_name.",
+    ]
+
+    for q in test_questions:
+        run_and_validate(q)
