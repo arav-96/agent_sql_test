@@ -1,158 +1,280 @@
-from tools.sql_builder import build_sql
+# diagnostic.executor - made changes to make it compatible with healthcare schema
+from config.diagnostic_config import (
+    PRIMARY_EXPANSION_THRESHOLD,
+    CONTRIBUTION_THRESHOLD,
+)
+
+from tools.rolling_baseline import compare_to_rolling_baseline
 
 
 class DiagnosticExecutor:
-    """
-    Executes diagnostic analysis steps defined in planner output.
-    """
 
-    def __init__(self, schema: dict, sql_executor):
-        """
-        Args:
-            schema: Semantic schema (e.g. TAXI_SEMANTIC_SCHEMA)
-            sql_executor: Instance of DuckDBExecutor (or compatible)
-        """
+    def __init__(self, schema, sql_executor):
         self.schema = schema
-        self.sql_executor = sql_executor
+        self.executor = sql_executor
+        self.con = self.executor.get_connection()
+        self.table = schema.get("table_name", schema.get("table", "claims"))
+        self.time_column = schema.get("time", {}).get("column", "year_month")
+        self.metrics = schema.get("metrics", {}) if isinstance(schema.get("metrics", {}), dict) else {}
+        raw_dimensions = schema.get("dimensions", {})
+        self.dimensions = raw_dimensions if isinstance(raw_dimensions, dict) else {}
 
-    # ---------------------------------------------------------
-    # Public entry point
-    # ---------------------------------------------------------
+        self.metric_aliases = {
+            "hitrate": "hit_rate" if "hit_rate" in self.metrics else "hitrate",
+            "jhitrate": "hit_rate" if "hit_rate" in self.metrics else "jhitrate",
+            "avg_savings": "average_savings" if "average_savings" in self.metrics else "avg_savings",
+            "claim_count": "audit_volume" if "audit_volume" in self.metrics else "claim_count",
+            "audits": "audit_volume" if "audit_volume" in self.metrics else "audits",
+        }
+
+        preferred_drill_dimensions = [
+            "selection_reason",
+            "CC_mcc_type",
+            "drg_code",
+            "mdc_code",
+            "mode",
+            "provider_name",
+            "mdcn_desc",
+            "drg_desc",
+            "cc_mcc_type",
+            "drg_condition",
+            "audit_type",
+        ]
+        self.drill_dimensions = [d for d in preferred_drill_dimensions if d in self.dimensions]
+
     def run(self, plan: dict) -> dict:
-        """
-        Execute diagnostic steps defined in the plan.
+        metric = self._canonical_metric(plan.get("metric"))
 
-        Returns:
-            Dict[str, Any]: Structured diagnostic results
-        """
-        results = {}
+        # Backward-compatible taxi diagnostic flow used by tests.
+        if self.table == "taxi_analysis_ready":
+            return self._run_taxi_diagnostic(plan)
 
-        metric = plan["metric"]
-        time_range = plan["time_range"]
-        group_by = plan.get("group_by", [])
-        filters = plan.get("filters", [])
+        if metric == "savings":
+            return self._run_savings_tree(plan)
 
-        for step in plan.get("analysis_steps", []):
-            if step == "compare_previous_period":
-                results["period_comparison"] = self._compare_previous_period(
-                    metric, time_range, group_by, filters
-                )
+        if metric in self.metrics:
+            return self._run_secondary_tree(metric)
 
-            elif step == "rank_top_contributors":
-                results["top_contributors"] = self._rank_top_contributors(
-                    metric, time_range, group_by, filters
-                )
+        return {}
 
-            elif step.startswith("check_related_metric"):
-                related_metric = step.split(":")[1]
-                results[f"related_{related_metric}"] = self._check_related_metric(
-                    related_metric, time_range, group_by, filters
-                )
-
-        return results
-
-    # ---------------------------------------------------------
-    # Diagnostic primitives
-    # ---------------------------------------------------------
-    def _compare_previous_period(
-        self,
-        metric: str,
-        time_range: str,
-        group_by: list,
-        filters: list
-    ) -> dict:
-        """
-        Compare metric between current and previous period.
-
-        NOTE:
-        v1 simplification:
-        - current = last_month
-        - previous = last_3_months (baseline proxy)
-        """
-
-        current_plan = {
-            "intent": "descriptive",
-            "metric": metric,
-            "time_range": "last_month",
-            "group_by": group_by,
-            "filters": filters,
-            "analysis_steps": []
+    def _run_taxi_diagnostic(self, plan: dict) -> dict:
+        metric_name = plan.get("metric", "avg_fare")
+        metric_map = {
+            "avg_fare": "AVG(fare_amount)",
+            "total_fare": "SUM(fare_amount)",
+            "avg_trip_distance": "AVG(trip_distance)",
+            "trip_count": "COUNT(*)",
         }
+        metric_expr = metric_map.get(metric_name, "AVG(fare_amount)")
 
-        previous_plan = {
-            "intent": "descriptive",
-            "metric": metric,
-            "time_range": "last_3_months",
-            "group_by": group_by,
-            "filters": filters,
-            "analysis_steps": []
-        }
+        period_comparison_sql = f"""
+            WITH monthly AS (
+                SELECT year_month, {metric_expr} AS metric_value
+                FROM {self.table}
+                GROUP BY year_month
+            ),
+            curr AS (
+                SELECT year_month, metric_value
+                FROM monthly
+                ORDER BY year_month DESC
+                LIMIT 1
+            ),
+            prev AS (
+                SELECT AVG(metric_value) AS baseline_avg
+                FROM (
+                    SELECT metric_value
+                    FROM monthly
+                    ORDER BY year_month DESC
+                    OFFSET 1
+                    LIMIT 3
+                ) t
+            )
+            SELECT
+                curr.year_month AS current_month,
+                curr.metric_value AS current_value,
+                prev.baseline_avg,
+                CASE
+                    WHEN prev.baseline_avg IS NULL OR prev.baseline_avg = 0 THEN 0
+                    ELSE (curr.metric_value - prev.baseline_avg) / prev.baseline_avg
+                END AS pct_change
+            FROM curr, prev
+        """
 
-        current_sql = build_sql(current_plan, self.schema)
-        previous_sql = build_sql(previous_plan, self.schema)
+        top_contributors_sql = f"""
+            SELECT VendorID AS segment, {metric_expr} AS value
+            FROM {self.table}
+            WHERE year_month = (
+                SELECT MAX(year_month) FROM {self.table}
+            )
+            GROUP BY VendorID
+            ORDER BY value DESC
+            LIMIT 5
+        """
 
-        current_df = self.sql_executor.execute(current_sql)
-        previous_df = self.sql_executor.execute(previous_sql)
+        period_rows = self.con.execute(period_comparison_sql).fetchall()
+        period = {}
+        if period_rows:
+            row = period_rows[0]
+            period = {
+                "current_month": row[0],
+                "current_value": float(row[1]) if row[1] is not None else None,
+                "baseline_avg": float(row[2]) if row[2] is not None else None,
+                "pct_change": float(row[3]) if row[3] is not None else 0.0,
+            }
+
+        contributors_df = self.executor.execute(top_contributors_sql)
+        top_contributors = [
+            {"segment": row["segment"], "value": float(row["value"])}
+            for _, row in contributors_df.iterrows()
+        ]
 
         return {
-            "current_period": current_df,
-            "previous_period": previous_df
+            "period_comparison": period,
+            "top_contributors": top_contributors,
         }
 
-    def _rank_top_contributors(
-        self,
-        metric: str,
-        time_range: str,
-        group_by: list,
-        filters: list
-    ):
-        """
-        Rank contributors (dimensions) by metric value.
+    def _canonical_metric(self, metric_name: str):
+        if metric_name in self.metrics:
+            return metric_name
+        return self.metric_aliases.get(metric_name, metric_name)
+
+    def _resolve_metric_expr(self, metric_name: str):
+        metric_def = self.metrics.get(metric_name)
+        if not metric_def:
+            return None
+
+        aggregation = (metric_def.get("aggregations") or [None])[0]
+        column = metric_def.get("column", "*")
+        if aggregation == "sum":
+            return f"SUM({column})"
+        if aggregation == "avg":
+            return f"AVG({column})"
+        if aggregation == "count":
+            return "COUNT(*)" if column == "*" else f"COUNT({column})"
+        if aggregation == "custom":
+            return metric_def.get("expression")
+        return None
+
+    def _metric_series_sql(self, metric_name: str):
+        metric_expr = self._resolve_metric_expr(metric_name)
+        if not metric_expr:
+            return None
+        return f"""
+            SELECT {self.time_column} AS year_month,
+                   {metric_expr} AS value
+            FROM {self.table}
+            GROUP BY {self.time_column}
         """
 
-        if not group_by:
+    def _secondary_metrics_from_plan(self, plan: dict):
+        steps = plan.get("analysis_steps", [])
+        requested = []
+        if isinstance(steps, list):
+            for step in steps:
+                if isinstance(step, str) and step.startswith("check_secondary_metric:"):
+                    _, metric_name = step.split(":", 1)
+                    canonical = self._canonical_metric(metric_name)
+                    if canonical in self.metrics and canonical not in requested and canonical != "savings":
+                        requested.append(canonical)
+
+        if requested:
+            return requested
+
+        preferred_secondary = [
+            "audit_volume",
+            "average_savings",
+            "hit_rate",
+            "audits",
+            "avg_savings",
+            "selections",
+            "rejection_rate",
+        ]
+        return [self._canonical_metric(m) for m in preferred_secondary if self._canonical_metric(m) in self.metrics]
+
+    def _run_savings_tree(self, plan: dict):
+        primary_sql = self._metric_series_sql("savings")
+        if not primary_sql:
             return {
-                "warning": "No group_by dimensions provided; cannot rank contributors"
+                "primary_metric": {},
+                "primary_dimension_drilldowns": {},
+                "secondary_metrics": {},
             }
+        primary = compare_to_rolling_baseline(self.con, primary_sql)
 
-        plan = {
-            "intent": "descriptive",
-            "metric": metric,
-            "time_range": time_range,
-            "group_by": group_by,
-            "filters": filters,
-            "analysis_steps": []
+        result = {
+            "primary_metric": primary,
+            "primary_dimension_drilldowns": {},
+            "secondary_metrics": {},
         }
 
-        sql = build_sql(plan, self.schema)
-        df = self.sql_executor.execute(sql)
+        if abs(primary.get("pct_change", 0)) >= PRIMARY_EXPANSION_THRESHOLD:
+            # First drill down on the primary metric (savings) to answer "why savings changed".
+            for dimension in self.drill_dimensions:
+                drill = self._compute_dimension_contribution("savings", dimension)
+                if drill:
+                    result["primary_dimension_drilldowns"][dimension] = drill
 
-        if metric not in df.columns:
-            return {
-                "warning": f"Metric {metric} not found in result"
-            }
+            # Then evaluate secondary metrics.
+            for metric in self._secondary_metrics_from_plan(plan):
+                result["secondary_metrics"][metric] = self._run_secondary_tree(metric)
 
-        return df.sort_values(by=metric, ascending=False)
+        return result
 
-    def _check_related_metric(
-        self,
-        related_metric: str,
-        time_range: str,
-        group_by: list,
-        filters: list
-    ):
+    def _run_secondary_tree(self, metric_name):
+        canonical_metric = self._canonical_metric(metric_name)
+        metric_sql = self._metric_series_sql(canonical_metric)
+        if not metric_sql:
+            return {"baseline": {}, "dimension_drilldowns": {}}
+
+        baseline = compare_to_rolling_baseline(self.con, metric_sql)
+
+        result = {"baseline": baseline, "dimension_drilldowns": {}}
+
+        if abs(baseline.get("pct_change", 0)) >= PRIMARY_EXPANSION_THRESHOLD:
+            for dimension in self.drill_dimensions:
+                drill = self._compute_dimension_contribution(canonical_metric, dimension)
+                if drill:
+                    result["dimension_drilldowns"][dimension] = drill
+
+        return result
+
+    def _compute_dimension_contribution(self, metric_name, dimension):
+        dim_def = self.dimensions.get(dimension, {})
+        dim_column = dim_def.get("column", dimension)
+
+        current_month_sql = f"""
+            SELECT {self.time_column}
+            FROM {self.table}
+            GROUP BY {self.time_column}
+            ORDER BY {self.time_column} DESC
+            LIMIT 1
         """
-        Execute analysis for a related metric (e.g., avg_trip_distance).
+
+        current_month = self.con.execute(current_month_sql).fetchone()[0]
+        metric_expr = self._resolve_metric_expr(metric_name)
+        if not metric_expr:
+            return None
+
+        current_sql = f"""
+            SELECT {dim_column} AS dim,
+                   {metric_expr} AS value
+            FROM {self.table}
+            WHERE {self.time_column} = '{current_month}'
+            GROUP BY {dim_column}
         """
 
-        plan = {
-            "intent": "descriptive",
-            "metric": related_metric,
-            "time_range": time_range,
-            "group_by": group_by,
-            "filters": filters,
-            "analysis_steps": []
-        }
+        df = self.executor.execute(current_sql)
+        if df.empty:
+            return None
 
-        sql = build_sql(plan, self.schema)
-        return self.sql_executor.execute(sql)
+        total_value = df["value"].sum()
+        material_segments = []
+
+        for _, row in df.iterrows():
+            contribution = row["value"] / total_value if total_value != 0 else 0
+            if abs(contribution) >= CONTRIBUTION_THRESHOLD:
+                material_segments.append(
+                    {"segment": row["dim"], "contribution": float(contribution)}
+                )
+
+        return material_segments if material_segments else None

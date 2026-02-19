@@ -1,0 +1,1822 @@
+{
+  "plans": [
+    {
+      "intent": "diagnostic",
+      "metric": "savings",
+      "time_range": "current_month",
+      "group_by": [],
+      "filters": [],
+      "analysis_steps": [
+        "compare_previous_period",
+        "rank_top_decliners",
+        "rank_top_contributors",
+        "check_secondary_metric:audit_volume"
+      ]
+    },
+    {
+      "intent": "descriptive",
+      "metric": "avg_savings",
+      "time_range": "current_month",
+      "group_by": [],
+      "filters": [],
+      "analysis_steps": []
+    },
+    {
+      "intent": "diagnostic",
+      "metric": "savings",
+      "time_range": "current_month",
+      "group_by": [],
+      "filters": [
+        {
+          "field": "approved",
+          "op": "=",
+          "value": 1
+        }
+      ],
+      "analysis_steps": [
+        "compare_previous_period",
+        "rank_top_decliners",
+        "rank_top_contributors",
+        "check_secondary_metric:audit_volume"
+      ]
+    },
+    {
+      "intent": "descriptive",
+      "metric": "avg_savings",
+      "time_range": "current_month",
+      "group_by": [],
+      "filters": [
+        {
+          "field": "approved",
+          "op": "=",
+          "value": 1
+        }
+      ],
+      "analysis_steps": []
+    },
+    {
+      "intent": "diagnostic",
+      "metric": "savings",
+      "time_range": "current_month",
+      "group_by": [],
+      "filters": [
+        {
+          "field": "approved",
+          "op": "=",
+          "value": 0
+        }
+      ],
+      "analysis_steps": [
+        "compare_previous_period",
+        "rank_top_decliners",
+        "rank_top_contributors",
+        "check_secondary_metric:audit_volume"
+      ]
+    },
+    {
+      "intent": "descriptive",
+      "metric": "avg_savings",
+      "time_range": "current_month",
+      "group_by": [],
+      "filters": [
+        {
+          "field": "approved",
+          "op": "=",
+          "value": 0
+        }
+      ],
+      "analysis_steps": []
+    },
+    {
+      "intent": "diagnostic",
+      "metric": "savings",
+      "time_range": "current_month",
+      "group_by": [],
+      "filters": [
+        {
+          "field": "approved",
+          "op": "!=",
+          "value": 0
+        }
+      ],
+      "analysis_steps": [
+        "compare_previous_period",
+        "rank_top_decliners",
+        "rank_top_contributors",
+        "check_secondary_metric:audit_volume"
+      ]
+    },
+    {
+      "intent": "descriptive",
+      "metric": "avg_savings",
+      "time_range": "current_month",
+      "group_by": [],
+      "filters": [
+        {
+          "field": "approved",
+          "op": "!=",
+          "value": 0
+        }
+      ],
+      "analysis_steps": []
+    },
+    {
+      "intent": "diagnostic",
+      "metric": "savings",
+      "time_range": "current_month",
+      "group_by": [],
+      "filters": [
+        {
+          "field": "approved",
+          "op": "=",
+          "value": null
+        }
+      ],
+      "analysis_steps": [
+        "compare_previous_period",
+        "rank_top_decliners",
+        "rank_top_contributors",
+        "check_secondary_metric:audit_volume"
+      ]
+    },
+    {
+      "intent": "descriptive",
+      "metric": "avg_savings",
+      "time_range": "current_month",
+      "group_by": [],
+      "filters": [
+        {
+          "field": "approved",
+          "op": "=",
+          "value": null
+        }
+      ],
+      "analysis_steps": []
+    },
+    {
+      "intent": "diagnostic",
+      "metric": "savings",
+      "time_range": "current_month",
+      "group_by": [],
+      "filters": [
+        {
+          "field": "approved",
+          "op": "!=",
+          "value": null
+        }
+      ],
+      "analysis_steps": [
+        "compare_previous_period",
+        "rank_top_decliners",
+        "rank_top_contributors",
+        "check_secondary_metric:audit_volume"
+      ]
+    },
+    {
+      "intent": "descriptive",
+      "metric": "avg_savings",
+      "time_range": "current_month",
+      "group_by": [],
+      "filters": [
+        {
+          "field": "approved",
+          "op": "!=",
+          "value": null
+        }
+      ],
+      "analysis_steps": []
+    },
+    {
+      "intent": "diagnostic",
+      "metric": "savings",
+      "time_range": "current_month",
+      "group_by": [],
+      "filters": [
+        {
+          "field": "mode",
+          "op": "=",
+          "value": "MSDRG"
+        }
+      ],
+      "analysis_steps": [
+        "compare_previous_period",
+        "rank_top_decliners",
+        "rank_top_contributors",
+        "check_secondary_metric:audit_volume"
+      ]
+    },
+    {
+      "intent": "descriptive",
+      "metric": "avg_savings",
+      "time_range": "current_month",
+      "group_by": [],
+      "filters": [
+        {
+          "field": "mode",
+          "op": "=",
+          "value": "MSDRG"
+        }
+      ],
+      "analysis_steps": []
+    },
+    {
+      "intent": "diagnostic",
+      "metric": "savings",
+      "time_range": "current_month",
+      "group_by": [],
+      "filters": [
+        {
+          "field": "mode",
+          "op": "!=",
+          "value": "DRGCL"
+        }
+      ],
+      "analysis_steps": [
+        "compare_previous_period",
+        "rank_top_decliners",
+        "rank_top_contributors",
+        "check_secondary_metric:audit_volume"
+      ]
+    },
+    {
+      "intent": "descriptive",
+      "metric": "avg_savings",
+      "time_range": "current_month",
+      "group_by": [],
+      "filters": [
+        {
+          "field": "mode",
+          "op": "!=",
+          "value": "DRGCL"
+        }
+      ],
+      "analysis_steps": []
+    },
+    {
+      "intent": "diagnostic",
+      "metric": "savings",
+      "time_range": "current_month",
+      "group_by": [],
+      "filters": [
+        {
+          "field": "claim_id",
+          "op": ">",
+          "value": 1000
+        }
+      ],
+      "analysis_steps": [
+        "compare_previous_period",
+        "rank_top_decliners",
+        "rank_top_contributors",
+        "check_secondary_metric:audit_volume"
+      ]
+    },
+    {
+      "intent": "descriptive",
+      "metric": "avg_savings",
+      "time_range": "current_month",
+      "group_by": [],
+      "filters": [
+        {
+          "field": "claim_id",
+          "op": ">",
+          "value": 1000
+        }
+      ],
+      "analysis_steps": []
+    },
+    {
+      "intent": "diagnostic",
+      "metric": "savings",
+      "time_range": "current_month",
+      "group_by": [],
+      "filters": [
+        {
+          "field": "claim_id",
+          "op": ">=",
+          "value": 1
+        }
+      ],
+      "analysis_steps": [
+        "compare_previous_period",
+        "rank_top_decliners",
+        "rank_top_contributors",
+        "check_secondary_metric:audit_volume"
+      ]
+    },
+    {
+      "intent": "descriptive",
+      "metric": "avg_savings",
+      "time_range": "current_month",
+      "group_by": [],
+      "filters": [
+        {
+          "field": "claim_id",
+          "op": ">=",
+          "value": 1
+        }
+      ],
+      "analysis_steps": []
+    },
+    {
+      "intent": "diagnostic",
+      "metric": "savings",
+      "time_range": "current_month",
+      "group_by": [],
+      "filters": [
+        {
+          "field": "claim_id",
+          "op": "<",
+          "value": 5000000
+        }
+      ],
+      "analysis_steps": [
+        "compare_previous_period",
+        "rank_top_decliners",
+        "rank_top_contributors",
+        "check_secondary_metric:audit_volume"
+      ]
+    },
+    {
+      "intent": "descriptive",
+      "metric": "avg_savings",
+      "time_range": "current_month",
+      "group_by": [],
+      "filters": [
+        {
+          "field": "claim_id",
+          "op": "<",
+          "value": 5000000
+        }
+      ],
+      "analysis_steps": []
+    },
+    {
+      "intent": "diagnostic",
+      "metric": "savings",
+      "time_range": "current_month",
+      "group_by": [],
+      "filters": [
+        {
+          "field": "claim_id",
+          "op": "<=",
+          "value": 9999999
+        }
+      ],
+      "analysis_steps": [
+        "compare_previous_period",
+        "rank_top_decliners",
+        "rank_top_contributors",
+        "check_secondary_metric:audit_volume"
+      ]
+    },
+    {
+      "intent": "descriptive",
+      "metric": "avg_savings",
+      "time_range": "current_month",
+      "group_by": [],
+      "filters": [
+        {
+          "field": "claim_id",
+          "op": "<=",
+          "value": 9999999
+        }
+      ],
+      "analysis_steps": []
+    },
+    {
+      "intent": "diagnostic",
+      "metric": "savings",
+      "time_range": "current_month",
+      "group_by": [],
+      "filters": [
+        {
+          "field": "approved",
+          "op": "=",
+          "value": 1
+        },
+        {
+          "field": "mode",
+          "op": "!=",
+          "value": "whole"
+        }
+      ],
+      "analysis_steps": [
+        "compare_previous_period",
+        "rank_top_decliners",
+        "rank_top_contributors",
+        "check_secondary_metric:audit_volume"
+      ]
+    },
+    {
+      "intent": "descriptive",
+      "metric": "avg_savings",
+      "time_range": "current_month",
+      "group_by": [],
+      "filters": [
+        {
+          "field": "approved",
+          "op": "=",
+          "value": 1
+        },
+        {
+          "field": "mode",
+          "op": "!=",
+          "value": "whole"
+        }
+      ],
+      "analysis_steps": []
+    },
+    {
+      "intent": "diagnostic",
+      "metric": "savings",
+      "time_range": "current_month",
+      "group_by": [
+        "mode"
+      ],
+      "filters": [],
+      "analysis_steps": [
+        "compare_previous_period",
+        "rank_top_decliners",
+        "rank_top_contributors",
+        "check_secondary_metric:audit_volume",
+        "drill_by_dimension:mode"
+      ]
+    },
+    {
+      "intent": "descriptive",
+      "metric": "avg_savings",
+      "time_range": "current_month",
+      "group_by": [
+        "mode"
+      ],
+      "filters": [],
+      "analysis_steps": []
+    },
+    {
+      "intent": "diagnostic",
+      "metric": "savings",
+      "time_range": "current_month",
+      "group_by": [
+        "mode"
+      ],
+      "filters": [
+        {
+          "field": "approved",
+          "op": "=",
+          "value": 1
+        }
+      ],
+      "analysis_steps": [
+        "compare_previous_period",
+        "rank_top_decliners",
+        "rank_top_contributors",
+        "check_secondary_metric:audit_volume",
+        "drill_by_dimension:mode"
+      ]
+    },
+    {
+      "intent": "descriptive",
+      "metric": "avg_savings",
+      "time_range": "current_month",
+      "group_by": [
+        "mode"
+      ],
+      "filters": [
+        {
+          "field": "approved",
+          "op": "=",
+          "value": 1
+        }
+      ],
+      "analysis_steps": []
+    },
+    {
+      "intent": "diagnostic",
+      "metric": "savings",
+      "time_range": "current_month",
+      "group_by": [
+        "mode"
+      ],
+      "filters": [
+        {
+          "field": "approved",
+          "op": "=",
+          "value": 0
+        }
+      ],
+      "analysis_steps": [
+        "compare_previous_period",
+        "rank_top_decliners",
+        "rank_top_contributors",
+        "check_secondary_metric:audit_volume",
+        "drill_by_dimension:mode"
+      ]
+    },
+    {
+      "intent": "descriptive",
+      "metric": "avg_savings",
+      "time_range": "current_month",
+      "group_by": [
+        "mode"
+      ],
+      "filters": [
+        {
+          "field": "approved",
+          "op": "=",
+          "value": 0
+        }
+      ],
+      "analysis_steps": []
+    },
+    {
+      "intent": "diagnostic",
+      "metric": "savings",
+      "time_range": "current_month",
+      "group_by": [
+        "mode"
+      ],
+      "filters": [
+        {
+          "field": "approved",
+          "op": "!=",
+          "value": 0
+        }
+      ],
+      "analysis_steps": [
+        "compare_previous_period",
+        "rank_top_decliners",
+        "rank_top_contributors",
+        "check_secondary_metric:audit_volume",
+        "drill_by_dimension:mode"
+      ]
+    },
+    {
+      "intent": "descriptive",
+      "metric": "avg_savings",
+      "time_range": "current_month",
+      "group_by": [
+        "mode"
+      ],
+      "filters": [
+        {
+          "field": "approved",
+          "op": "!=",
+          "value": 0
+        }
+      ],
+      "analysis_steps": []
+    },
+    {
+      "intent": "diagnostic",
+      "metric": "savings",
+      "time_range": "current_month",
+      "group_by": [
+        "mode"
+      ],
+      "filters": [
+        {
+          "field": "approved",
+          "op": "=",
+          "value": null
+        }
+      ],
+      "analysis_steps": [
+        "compare_previous_period",
+        "rank_top_decliners",
+        "rank_top_contributors",
+        "check_secondary_metric:audit_volume",
+        "drill_by_dimension:mode"
+      ]
+    },
+    {
+      "intent": "descriptive",
+      "metric": "avg_savings",
+      "time_range": "current_month",
+      "group_by": [
+        "mode"
+      ],
+      "filters": [
+        {
+          "field": "approved",
+          "op": "=",
+          "value": null
+        }
+      ],
+      "analysis_steps": []
+    },
+    {
+      "intent": "diagnostic",
+      "metric": "savings",
+      "time_range": "current_month",
+      "group_by": [
+        "mode"
+      ],
+      "filters": [
+        {
+          "field": "approved",
+          "op": "!=",
+          "value": null
+        }
+      ],
+      "analysis_steps": [
+        "compare_previous_period",
+        "rank_top_decliners",
+        "rank_top_contributors",
+        "check_secondary_metric:audit_volume",
+        "drill_by_dimension:mode"
+      ]
+    },
+    {
+      "intent": "descriptive",
+      "metric": "avg_savings",
+      "time_range": "current_month",
+      "group_by": [
+        "mode"
+      ],
+      "filters": [
+        {
+          "field": "approved",
+          "op": "!=",
+          "value": null
+        }
+      ],
+      "analysis_steps": []
+    },
+    {
+      "intent": "diagnostic",
+      "metric": "savings",
+      "time_range": "current_month",
+      "group_by": [
+        "mode"
+      ],
+      "filters": [
+        {
+          "field": "mode",
+          "op": "=",
+          "value": "MSDRG"
+        }
+      ],
+      "analysis_steps": [
+        "compare_previous_period",
+        "rank_top_decliners",
+        "rank_top_contributors",
+        "check_secondary_metric:audit_volume",
+        "drill_by_dimension:mode"
+      ]
+    },
+    {
+      "intent": "descriptive",
+      "metric": "avg_savings",
+      "time_range": "current_month",
+      "group_by": [
+        "mode"
+      ],
+      "filters": [
+        {
+          "field": "mode",
+          "op": "=",
+          "value": "MSDRG"
+        }
+      ],
+      "analysis_steps": []
+    },
+    {
+      "intent": "diagnostic",
+      "metric": "savings",
+      "time_range": "current_month",
+      "group_by": [
+        "mode"
+      ],
+      "filters": [
+        {
+          "field": "mode",
+          "op": "!=",
+          "value": "DRGCL"
+        }
+      ],
+      "analysis_steps": [
+        "compare_previous_period",
+        "rank_top_decliners",
+        "rank_top_contributors",
+        "check_secondary_metric:audit_volume",
+        "drill_by_dimension:mode"
+      ]
+    },
+    {
+      "intent": "descriptive",
+      "metric": "avg_savings",
+      "time_range": "current_month",
+      "group_by": [
+        "mode"
+      ],
+      "filters": [
+        {
+          "field": "mode",
+          "op": "!=",
+          "value": "DRGCL"
+        }
+      ],
+      "analysis_steps": []
+    },
+    {
+      "intent": "diagnostic",
+      "metric": "savings",
+      "time_range": "current_month",
+      "group_by": [
+        "mode"
+      ],
+      "filters": [
+        {
+          "field": "claim_id",
+          "op": ">",
+          "value": 1000
+        }
+      ],
+      "analysis_steps": [
+        "compare_previous_period",
+        "rank_top_decliners",
+        "rank_top_contributors",
+        "check_secondary_metric:audit_volume",
+        "drill_by_dimension:mode"
+      ]
+    },
+    {
+      "intent": "descriptive",
+      "metric": "avg_savings",
+      "time_range": "current_month",
+      "group_by": [
+        "mode"
+      ],
+      "filters": [
+        {
+          "field": "claim_id",
+          "op": ">",
+          "value": 1000
+        }
+      ],
+      "analysis_steps": []
+    },
+    {
+      "intent": "diagnostic",
+      "metric": "savings",
+      "time_range": "current_month",
+      "group_by": [
+        "mode"
+      ],
+      "filters": [
+        {
+          "field": "claim_id",
+          "op": ">=",
+          "value": 1
+        }
+      ],
+      "analysis_steps": [
+        "compare_previous_period",
+        "rank_top_decliners",
+        "rank_top_contributors",
+        "check_secondary_metric:audit_volume",
+        "drill_by_dimension:mode"
+      ]
+    },
+    {
+      "intent": "descriptive",
+      "metric": "avg_savings",
+      "time_range": "current_month",
+      "group_by": [
+        "mode"
+      ],
+      "filters": [
+        {
+          "field": "claim_id",
+          "op": ">=",
+          "value": 1
+        }
+      ],
+      "analysis_steps": []
+    },
+    {
+      "intent": "diagnostic",
+      "metric": "savings",
+      "time_range": "current_month",
+      "group_by": [
+        "mode"
+      ],
+      "filters": [
+        {
+          "field": "claim_id",
+          "op": "<",
+          "value": 5000000
+        }
+      ],
+      "analysis_steps": [
+        "compare_previous_period",
+        "rank_top_decliners",
+        "rank_top_contributors",
+        "check_secondary_metric:audit_volume",
+        "drill_by_dimension:mode"
+      ]
+    },
+    {
+      "intent": "descriptive",
+      "metric": "avg_savings",
+      "time_range": "current_month",
+      "group_by": [
+        "mode"
+      ],
+      "filters": [
+        {
+          "field": "claim_id",
+          "op": "<",
+          "value": 5000000
+        }
+      ],
+      "analysis_steps": []
+    },
+    {
+      "intent": "diagnostic",
+      "metric": "savings",
+      "time_range": "current_month",
+      "group_by": [
+        "mode"
+      ],
+      "filters": [
+        {
+          "field": "claim_id",
+          "op": "<=",
+          "value": 9999999
+        }
+      ],
+      "analysis_steps": [
+        "compare_previous_period",
+        "rank_top_decliners",
+        "rank_top_contributors",
+        "check_secondary_metric:audit_volume",
+        "drill_by_dimension:mode"
+      ]
+    },
+    {
+      "intent": "descriptive",
+      "metric": "avg_savings",
+      "time_range": "current_month",
+      "group_by": [
+        "mode"
+      ],
+      "filters": [
+        {
+          "field": "claim_id",
+          "op": "<=",
+          "value": 9999999
+        }
+      ],
+      "analysis_steps": []
+    },
+    {
+      "intent": "diagnostic",
+      "metric": "savings",
+      "time_range": "current_month",
+      "group_by": [
+        "mode"
+      ],
+      "filters": [
+        {
+          "field": "approved",
+          "op": "=",
+          "value": 1
+        },
+        {
+          "field": "mode",
+          "op": "!=",
+          "value": "whole"
+        }
+      ],
+      "analysis_steps": [
+        "compare_previous_period",
+        "rank_top_decliners",
+        "rank_top_contributors",
+        "check_secondary_metric:audit_volume",
+        "drill_by_dimension:mode"
+      ]
+    },
+    {
+      "intent": "descriptive",
+      "metric": "avg_savings",
+      "time_range": "current_month",
+      "group_by": [
+        "mode"
+      ],
+      "filters": [
+        {
+          "field": "approved",
+          "op": "=",
+          "value": 1
+        },
+        {
+          "field": "mode",
+          "op": "!=",
+          "value": "whole"
+        }
+      ],
+      "analysis_steps": []
+    },
+    {
+      "intent": "diagnostic",
+      "metric": "savings",
+      "time_range": "current_month",
+      "group_by": [
+        "provider_name"
+      ],
+      "filters": [],
+      "analysis_steps": [
+        "compare_previous_period",
+        "rank_top_decliners",
+        "rank_top_contributors",
+        "check_secondary_metric:audit_volume",
+        "drill_by_dimension:provider_name"
+      ]
+    },
+    {
+      "intent": "descriptive",
+      "metric": "avg_savings",
+      "time_range": "current_month",
+      "group_by": [
+        "provider_name"
+      ],
+      "filters": [],
+      "analysis_steps": []
+    },
+    {
+      "intent": "diagnostic",
+      "metric": "savings",
+      "time_range": "current_month",
+      "group_by": [
+        "provider_name"
+      ],
+      "filters": [
+        {
+          "field": "approved",
+          "op": "=",
+          "value": 1
+        }
+      ],
+      "analysis_steps": [
+        "compare_previous_period",
+        "rank_top_decliners",
+        "rank_top_contributors",
+        "check_secondary_metric:audit_volume",
+        "drill_by_dimension:provider_name"
+      ]
+    },
+    {
+      "intent": "descriptive",
+      "metric": "avg_savings",
+      "time_range": "current_month",
+      "group_by": [
+        "provider_name"
+      ],
+      "filters": [
+        {
+          "field": "approved",
+          "op": "=",
+          "value": 1
+        }
+      ],
+      "analysis_steps": []
+    },
+    {
+      "intent": "diagnostic",
+      "metric": "savings",
+      "time_range": "current_month",
+      "group_by": [
+        "provider_name"
+      ],
+      "filters": [
+        {
+          "field": "approved",
+          "op": "=",
+          "value": 0
+        }
+      ],
+      "analysis_steps": [
+        "compare_previous_period",
+        "rank_top_decliners",
+        "rank_top_contributors",
+        "check_secondary_metric:audit_volume",
+        "drill_by_dimension:provider_name"
+      ]
+    },
+    {
+      "intent": "descriptive",
+      "metric": "avg_savings",
+      "time_range": "current_month",
+      "group_by": [
+        "provider_name"
+      ],
+      "filters": [
+        {
+          "field": "approved",
+          "op": "=",
+          "value": 0
+        }
+      ],
+      "analysis_steps": []
+    },
+    {
+      "intent": "diagnostic",
+      "metric": "savings",
+      "time_range": "current_month",
+      "group_by": [
+        "provider_name"
+      ],
+      "filters": [
+        {
+          "field": "approved",
+          "op": "!=",
+          "value": 0
+        }
+      ],
+      "analysis_steps": [
+        "compare_previous_period",
+        "rank_top_decliners",
+        "rank_top_contributors",
+        "check_secondary_metric:audit_volume",
+        "drill_by_dimension:provider_name"
+      ]
+    },
+    {
+      "intent": "descriptive",
+      "metric": "avg_savings",
+      "time_range": "current_month",
+      "group_by": [
+        "provider_name"
+      ],
+      "filters": [
+        {
+          "field": "approved",
+          "op": "!=",
+          "value": 0
+        }
+      ],
+      "analysis_steps": []
+    },
+    {
+      "intent": "diagnostic",
+      "metric": "savings",
+      "time_range": "current_month",
+      "group_by": [
+        "provider_name"
+      ],
+      "filters": [
+        {
+          "field": "approved",
+          "op": "=",
+          "value": null
+        }
+      ],
+      "analysis_steps": [
+        "compare_previous_period",
+        "rank_top_decliners",
+        "rank_top_contributors",
+        "check_secondary_metric:audit_volume",
+        "drill_by_dimension:provider_name"
+      ]
+    },
+    {
+      "intent": "descriptive",
+      "metric": "avg_savings",
+      "time_range": "current_month",
+      "group_by": [
+        "provider_name"
+      ],
+      "filters": [
+        {
+          "field": "approved",
+          "op": "=",
+          "value": null
+        }
+      ],
+      "analysis_steps": []
+    },
+    {
+      "intent": "diagnostic",
+      "metric": "savings",
+      "time_range": "current_month",
+      "group_by": [
+        "provider_name"
+      ],
+      "filters": [
+        {
+          "field": "approved",
+          "op": "!=",
+          "value": null
+        }
+      ],
+      "analysis_steps": [
+        "compare_previous_period",
+        "rank_top_decliners",
+        "rank_top_contributors",
+        "check_secondary_metric:audit_volume",
+        "drill_by_dimension:provider_name"
+      ]
+    },
+    {
+      "intent": "descriptive",
+      "metric": "avg_savings",
+      "time_range": "current_month",
+      "group_by": [
+        "provider_name"
+      ],
+      "filters": [
+        {
+          "field": "approved",
+          "op": "!=",
+          "value": null
+        }
+      ],
+      "analysis_steps": []
+    },
+    {
+      "intent": "diagnostic",
+      "metric": "savings",
+      "time_range": "current_month",
+      "group_by": [
+        "provider_name"
+      ],
+      "filters": [
+        {
+          "field": "mode",
+          "op": "=",
+          "value": "MSDRG"
+        }
+      ],
+      "analysis_steps": [
+        "compare_previous_period",
+        "rank_top_decliners",
+        "rank_top_contributors",
+        "check_secondary_metric:audit_volume",
+        "drill_by_dimension:provider_name"
+      ]
+    },
+    {
+      "intent": "descriptive",
+      "metric": "avg_savings",
+      "time_range": "current_month",
+      "group_by": [
+        "provider_name"
+      ],
+      "filters": [
+        {
+          "field": "mode",
+          "op": "=",
+          "value": "MSDRG"
+        }
+      ],
+      "analysis_steps": []
+    },
+    {
+      "intent": "diagnostic",
+      "metric": "savings",
+      "time_range": "current_month",
+      "group_by": [
+        "provider_name"
+      ],
+      "filters": [
+        {
+          "field": "mode",
+          "op": "!=",
+          "value": "DRGCL"
+        }
+      ],
+      "analysis_steps": [
+        "compare_previous_period",
+        "rank_top_decliners",
+        "rank_top_contributors",
+        "check_secondary_metric:audit_volume",
+        "drill_by_dimension:provider_name"
+      ]
+    },
+    {
+      "intent": "descriptive",
+      "metric": "avg_savings",
+      "time_range": "current_month",
+      "group_by": [
+        "provider_name"
+      ],
+      "filters": [
+        {
+          "field": "mode",
+          "op": "!=",
+          "value": "DRGCL"
+        }
+      ],
+      "analysis_steps": []
+    },
+    {
+      "intent": "diagnostic",
+      "metric": "savings",
+      "time_range": "current_month",
+      "group_by": [
+        "provider_name"
+      ],
+      "filters": [
+        {
+          "field": "claim_id",
+          "op": ">",
+          "value": 1000
+        }
+      ],
+      "analysis_steps": [
+        "compare_previous_period",
+        "rank_top_decliners",
+        "rank_top_contributors",
+        "check_secondary_metric:audit_volume",
+        "drill_by_dimension:provider_name"
+      ]
+    },
+    {
+      "intent": "descriptive",
+      "metric": "avg_savings",
+      "time_range": "current_month",
+      "group_by": [
+        "provider_name"
+      ],
+      "filters": [
+        {
+          "field": "claim_id",
+          "op": ">",
+          "value": 1000
+        }
+      ],
+      "analysis_steps": []
+    },
+    {
+      "intent": "diagnostic",
+      "metric": "savings",
+      "time_range": "current_month",
+      "group_by": [
+        "provider_name"
+      ],
+      "filters": [
+        {
+          "field": "claim_id",
+          "op": ">=",
+          "value": 1
+        }
+      ],
+      "analysis_steps": [
+        "compare_previous_period",
+        "rank_top_decliners",
+        "rank_top_contributors",
+        "check_secondary_metric:audit_volume",
+        "drill_by_dimension:provider_name"
+      ]
+    },
+    {
+      "intent": "descriptive",
+      "metric": "avg_savings",
+      "time_range": "current_month",
+      "group_by": [
+        "provider_name"
+      ],
+      "filters": [
+        {
+          "field": "claim_id",
+          "op": ">=",
+          "value": 1
+        }
+      ],
+      "analysis_steps": []
+    },
+    {
+      "intent": "diagnostic",
+      "metric": "savings",
+      "time_range": "current_month",
+      "group_by": [
+        "provider_name"
+      ],
+      "filters": [
+        {
+          "field": "claim_id",
+          "op": "<",
+          "value": 5000000
+        }
+      ],
+      "analysis_steps": [
+        "compare_previous_period",
+        "rank_top_decliners",
+        "rank_top_contributors",
+        "check_secondary_metric:audit_volume",
+        "drill_by_dimension:provider_name"
+      ]
+    },
+    {
+      "intent": "descriptive",
+      "metric": "avg_savings",
+      "time_range": "current_month",
+      "group_by": [
+        "provider_name"
+      ],
+      "filters": [
+        {
+          "field": "claim_id",
+          "op": "<",
+          "value": 5000000
+        }
+      ],
+      "analysis_steps": []
+    },
+    {
+      "intent": "diagnostic",
+      "metric": "savings",
+      "time_range": "current_month",
+      "group_by": [
+        "provider_name"
+      ],
+      "filters": [
+        {
+          "field": "claim_id",
+          "op": "<=",
+          "value": 9999999
+        }
+      ],
+      "analysis_steps": [
+        "compare_previous_period",
+        "rank_top_decliners",
+        "rank_top_contributors",
+        "check_secondary_metric:audit_volume",
+        "drill_by_dimension:provider_name"
+      ]
+    },
+    {
+      "intent": "descriptive",
+      "metric": "avg_savings",
+      "time_range": "current_month",
+      "group_by": [
+        "provider_name"
+      ],
+      "filters": [
+        {
+          "field": "claim_id",
+          "op": "<=",
+          "value": 9999999
+        }
+      ],
+      "analysis_steps": []
+    },
+    {
+      "intent": "diagnostic",
+      "metric": "savings",
+      "time_range": "current_month",
+      "group_by": [
+        "provider_name"
+      ],
+      "filters": [
+        {
+          "field": "approved",
+          "op": "=",
+          "value": 1
+        },
+        {
+          "field": "mode",
+          "op": "!=",
+          "value": "whole"
+        }
+      ],
+      "analysis_steps": [
+        "compare_previous_period",
+        "rank_top_decliners",
+        "rank_top_contributors",
+        "check_secondary_metric:audit_volume",
+        "drill_by_dimension:provider_name"
+      ]
+    },
+    {
+      "intent": "descriptive",
+      "metric": "avg_savings",
+      "time_range": "current_month",
+      "group_by": [
+        "provider_name"
+      ],
+      "filters": [
+        {
+          "field": "approved",
+          "op": "=",
+          "value": 1
+        },
+        {
+          "field": "mode",
+          "op": "!=",
+          "value": "whole"
+        }
+      ],
+      "analysis_steps": []
+    },
+    {
+      "intent": "diagnostic",
+      "metric": "savings",
+      "time_range": "current_month",
+      "group_by": [
+        "audit_month"
+      ],
+      "filters": [],
+      "analysis_steps": [
+        "compare_previous_period",
+        "rank_top_decliners",
+        "rank_top_contributors",
+        "check_secondary_metric:audit_volume",
+        "drill_by_dimension:audit_month"
+      ]
+    },
+    {
+      "intent": "descriptive",
+      "metric": "avg_savings",
+      "time_range": "current_month",
+      "group_by": [
+        "audit_month"
+      ],
+      "filters": [],
+      "analysis_steps": []
+    },
+    {
+      "intent": "diagnostic",
+      "metric": "savings",
+      "time_range": "current_month",
+      "group_by": [
+        "audit_month"
+      ],
+      "filters": [
+        {
+          "field": "approved",
+          "op": "=",
+          "value": 1
+        }
+      ],
+      "analysis_steps": [
+        "compare_previous_period",
+        "rank_top_decliners",
+        "rank_top_contributors",
+        "check_secondary_metric:audit_volume",
+        "drill_by_dimension:audit_month"
+      ]
+    },
+    {
+      "intent": "descriptive",
+      "metric": "avg_savings",
+      "time_range": "current_month",
+      "group_by": [
+        "audit_month"
+      ],
+      "filters": [
+        {
+          "field": "approved",
+          "op": "=",
+          "value": 1
+        }
+      ],
+      "analysis_steps": []
+    },
+    {
+      "intent": "diagnostic",
+      "metric": "savings",
+      "time_range": "current_month",
+      "group_by": [
+        "audit_month"
+      ],
+      "filters": [
+        {
+          "field": "approved",
+          "op": "=",
+          "value": 0
+        }
+      ],
+      "analysis_steps": [
+        "compare_previous_period",
+        "rank_top_decliners",
+        "rank_top_contributors",
+        "check_secondary_metric:audit_volume",
+        "drill_by_dimension:audit_month"
+      ]
+    },
+    {
+      "intent": "descriptive",
+      "metric": "avg_savings",
+      "time_range": "current_month",
+      "group_by": [
+        "audit_month"
+      ],
+      "filters": [
+        {
+          "field": "approved",
+          "op": "=",
+          "value": 0
+        }
+      ],
+      "analysis_steps": []
+    },
+    {
+      "intent": "diagnostic",
+      "metric": "savings",
+      "time_range": "current_month",
+      "group_by": [
+        "audit_month"
+      ],
+      "filters": [
+        {
+          "field": "approved",
+          "op": "!=",
+          "value": 0
+        }
+      ],
+      "analysis_steps": [
+        "compare_previous_period",
+        "rank_top_decliners",
+        "rank_top_contributors",
+        "check_secondary_metric:audit_volume",
+        "drill_by_dimension:audit_month"
+      ]
+    },
+    {
+      "intent": "descriptive",
+      "metric": "avg_savings",
+      "time_range": "current_month",
+      "group_by": [
+        "audit_month"
+      ],
+      "filters": [
+        {
+          "field": "approved",
+          "op": "!=",
+          "value": 0
+        }
+      ],
+      "analysis_steps": []
+    },
+    {
+      "intent": "diagnostic",
+      "metric": "savings",
+      "time_range": "current_month",
+      "group_by": [
+        "audit_month"
+      ],
+      "filters": [
+        {
+          "field": "approved",
+          "op": "=",
+          "value": null
+        }
+      ],
+      "analysis_steps": [
+        "compare_previous_period",
+        "rank_top_decliners",
+        "rank_top_contributors",
+        "check_secondary_metric:audit_volume",
+        "drill_by_dimension:audit_month"
+      ]
+    },
+    {
+      "intent": "descriptive",
+      "metric": "avg_savings",
+      "time_range": "current_month",
+      "group_by": [
+        "audit_month"
+      ],
+      "filters": [
+        {
+          "field": "approved",
+          "op": "=",
+          "value": null
+        }
+      ],
+      "analysis_steps": []
+    },
+    {
+      "intent": "diagnostic",
+      "metric": "savings",
+      "time_range": "current_month",
+      "group_by": [
+        "audit_month"
+      ],
+      "filters": [
+        {
+          "field": "approved",
+          "op": "!=",
+          "value": null
+        }
+      ],
+      "analysis_steps": [
+        "compare_previous_period",
+        "rank_top_decliners",
+        "rank_top_contributors",
+        "check_secondary_metric:audit_volume",
+        "drill_by_dimension:audit_month"
+      ]
+    },
+    {
+      "intent": "descriptive",
+      "metric": "avg_savings",
+      "time_range": "current_month",
+      "group_by": [
+        "audit_month"
+      ],
+      "filters": [
+        {
+          "field": "approved",
+          "op": "!=",
+          "value": null
+        }
+      ],
+      "analysis_steps": []
+    },
+    {
+      "intent": "diagnostic",
+      "metric": "savings",
+      "time_range": "current_month",
+      "group_by": [
+        "audit_month"
+      ],
+      "filters": [
+        {
+          "field": "mode",
+          "op": "=",
+          "value": "MSDRG"
+        }
+      ],
+      "analysis_steps": [
+        "compare_previous_period",
+        "rank_top_decliners",
+        "rank_top_contributors",
+        "check_secondary_metric:audit_volume",
+        "drill_by_dimension:audit_month"
+      ]
+    },
+    {
+      "intent": "descriptive",
+      "metric": "avg_savings",
+      "time_range": "current_month",
+      "group_by": [
+        "audit_month"
+      ],
+      "filters": [
+        {
+          "field": "mode",
+          "op": "=",
+          "value": "MSDRG"
+        }
+      ],
+      "analysis_steps": []
+    },
+    {
+      "intent": "diagnostic",
+      "metric": "savings",
+      "time_range": "current_month",
+      "group_by": [
+        "audit_month"
+      ],
+      "filters": [
+        {
+          "field": "mode",
+          "op": "!=",
+          "value": "DRGCL"
+        }
+      ],
+      "analysis_steps": [
+        "compare_previous_period",
+        "rank_top_decliners",
+        "rank_top_contributors",
+        "check_secondary_metric:audit_volume",
+        "drill_by_dimension:audit_month"
+      ]
+    },
+    {
+      "intent": "descriptive",
+      "metric": "avg_savings",
+      "time_range": "current_month",
+      "group_by": [
+        "audit_month"
+      ],
+      "filters": [
+        {
+          "field": "mode",
+          "op": "!=",
+          "value": "DRGCL"
+        }
+      ],
+      "analysis_steps": []
+    },
+    {
+      "intent": "diagnostic",
+      "metric": "savings",
+      "time_range": "current_month",
+      "group_by": [
+        "audit_month"
+      ],
+      "filters": [
+        {
+          "field": "claim_id",
+          "op": ">",
+          "value": 1000
+        }
+      ],
+      "analysis_steps": [
+        "compare_previous_period",
+        "rank_top_decliners",
+        "rank_top_contributors",
+        "check_secondary_metric:audit_volume",
+        "drill_by_dimension:audit_month"
+      ]
+    },
+    {
+      "intent": "descriptive",
+      "metric": "avg_savings",
+      "time_range": "current_month",
+      "group_by": [
+        "audit_month"
+      ],
+      "filters": [
+        {
+          "field": "claim_id",
+          "op": ">",
+          "value": 1000
+        }
+      ],
+      "analysis_steps": []
+    },
+    {
+      "intent": "diagnostic",
+      "metric": "savings",
+      "time_range": "current_month",
+      "group_by": [
+        "audit_month"
+      ],
+      "filters": [
+        {
+          "field": "claim_id",
+          "op": ">=",
+          "value": 1
+        }
+      ],
+      "analysis_steps": [
+        "compare_previous_period",
+        "rank_top_decliners",
+        "rank_top_contributors",
+        "check_secondary_metric:audit_volume",
+        "drill_by_dimension:audit_month"
+      ]
+    },
+    {
+      "intent": "descriptive",
+      "metric": "avg_savings",
+      "time_range": "current_month",
+      "group_by": [
+        "audit_month"
+      ],
+      "filters": [
+        {
+          "field": "claim_id",
+          "op": ">=",
+          "value": 1
+        }
+      ],
+      "analysis_steps": []
+    },
+    {
+      "intent": "diagnostic",
+      "metric": "savings",
+      "time_range": "current_month",
+      "group_by": [
+        "audit_month"
+      ],
+      "filters": [
+        {
+          "field": "claim_id",
+          "op": "<",
+          "value": 5000000
+        }
+      ],
+      "analysis_steps": [
+        "compare_previous_period",
+        "rank_top_decliners",
+        "rank_top_contributors",
+        "check_secondary_metric:audit_volume",
+        "drill_by_dimension:audit_month"
+      ]
+    },
+    {
+      "intent": "descriptive",
+      "metric": "avg_savings",
+      "time_range": "current_month",
+      "group_by": [
+        "audit_month"
+      ],
+      "filters": [
+        {
+          "field": "claim_id",
+          "op": "<",
+          "value": 5000000
+        }
+      ],
+      "analysis_steps": []
+    }
+  ],
+  "_comment": "sql_builder_test_scenarios_100.json - scenarios to test"
+}
