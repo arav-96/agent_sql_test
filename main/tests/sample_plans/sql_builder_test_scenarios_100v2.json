@@ -1,0 +1,961 @@
+[
+  {
+    "intent": "descriptive",
+    "metric": "savings",
+    "time_range": "last_12_months",
+    "group_by": [],
+    "filters": [],
+    "analysis_steps": []
+  },
+  {
+    "intent": "descriptive",
+    "metric": "savings",
+    "time_range": "last_6_months",
+    "group_by": ["provider_name"],
+    "filters": [],
+    "analysis_steps": ["rank_top_contributors"]
+  },
+  {
+    "intent": "descriptive",
+    "metric": "savings",
+    "time_range": "last_3_months",
+    "group_by": ["drg_desc"],
+    "filters": [
+      {"field": "audit_type", "operator": "equals", "value": "MSDRG"}
+    ],
+    "analysis_steps": ["rank_top_contributors"]
+  },
+  {
+    "intent": "descriptive",
+    "metric": "audits",
+    "time_range": "last_12_months",
+    "group_by": ["audit_month"],
+    "filters": [],
+    "analysis_steps": ["drill_by_time"]
+  },
+  {
+    "intent": "descriptive",
+    "metric": "hitrate",
+    "time_range": "last_6_months",
+    "group_by": [],
+    "filters": [
+      {"field": "audit_type", "operator": "equals", "value": "DRGCL"}
+    ],
+    "analysis_steps": []
+  },
+  {
+    "intent": "descriptive",
+    "metric": "audits",
+    "time_range": "last_3_months",
+    "group_by": ["selectionmonth"],
+    "filters": [],
+    "analysis_steps": ["drill_by_time"]
+  },
+  {
+    "intent": "descriptive",
+    "metric": "savings",
+    "time_range": "current_month",
+    "group_by": ["provider_name"],
+    "filters": [
+      {"field": "category", "operator": "equals", "value": "IP"}
+    ],
+    "analysis_steps": ["rank_top_contributors"]
+  },
+  {
+    "intent": "descriptive",
+    "metric": "savings",
+    "time_range": "current_month",
+    "group_by": ["category"],
+    "filters": [],
+    "analysis_steps": []
+  },
+  {
+    "intent": "descriptive",
+    "metric": "audits",
+    "time_range": "last_1_month",
+    "group_by": ["audit_type"],
+    "filters": [],
+    "analysis_steps": []
+  },
+  {
+    "intent": "descriptive",
+    "metric": "savings",
+    "time_range": "last_12_months",
+    "group_by": ["audit_type"],
+    "filters": [],
+    "analysis_steps": []
+  },
+  {
+    "intent": "descriptive",
+    "metric": "audits",
+    "time_range": "last_12_months",
+    "group_by": ["provider_name"],
+    "filters": [
+      {"field": "audit_type", "operator": "equals", "value": "whole"}
+    ],
+    "analysis_steps": ["rank_top_contributors"]
+  },
+  {
+    "intent": "descriptive",
+    "metric": "savings",
+    "time_range": "last_3_months",
+    "group_by": ["mdcn"],
+    "filters": [],
+    "analysis_steps": ["rank_top_contributors"]
+  },
+  {
+    "intent": "descriptive",
+    "metric": "savings",
+    "time_range": "last_6_months",
+    "group_by": ["drgconditiontype"],
+    "filters": [],
+    "analysis_steps": []
+  },
+  {
+    "intent": "descriptive",
+    "metric": "audits",
+    "time_range": "last_6_months",
+    "group_by": ["drg_desc"],
+    "filters": [],
+    "analysis_steps": ["rank_top_contributors"]
+  },
+  {
+    "intent": "descriptive",
+    "metric": "hitrate",
+    "time_range": "last_12_months",
+    "group_by": ["provider_name"],
+    "filters": [],
+    "analysis_steps": ["rank_top_contributors"]
+  },
+  {
+    "intent": "descriptive",
+    "metric": "savings",
+    "time_range": "last_1_month",
+    "group_by": [],
+    "filters": [
+      {"field": "provider_name", "operator": "equals", "value": "ABC HOSPITAL"}
+    ],
+    "analysis_steps": []
+  },
+  {
+    "intent": "descriptive",
+    "metric": "audits",
+    "time_range": "last_1_month",
+    "group_by": [],
+    "filters": [
+      {"field": "provider_name", "operator": "equals", "value": "ABC HOSPITAL"}
+    ],
+    "analysis_steps": []
+  },
+  {
+    "intent": "descriptive",
+    "metric": "hitrate",
+    "time_range": "last_1_month",
+    "group_by": [],
+    "filters": [
+      {"field": "provider_name", "operator": "equals", "value": "ABC HOSPITAL"}
+    ],
+    "analysis_steps": []
+  },
+  {
+    "intent": "descriptive",
+    "metric": "savings",
+    "time_range": "year_to_date",
+    "group_by": ["selectionreason"],
+    "filters": [],
+    "analysis_steps": ["rank_top_contributors"]
+  },
+  {
+    "intent": "descriptive",
+    "metric": "audits",
+    "time_range": "year_to_date",
+    "group_by": ["selectionreason"],
+    "filters": [],
+    "analysis_steps": []
+  },
+  {
+    "intent": "descriptive",
+    "metric": "savings",
+    "time_range": "last_12_months",
+    "group_by": ["loadmonth"],
+    "filters": [],
+    "analysis_steps": ["drill_by_time"]
+  },
+  {
+    "intent": "descriptive",
+    "metric": "audits",
+    "time_range": "last_12_months",
+    "group_by": ["loadmonth"],
+    "filters": [],
+    "analysis_steps": ["drill_by_time"]
+  },
+  {
+    "intent": "descriptive",
+    "metric": "hitrate",
+    "time_range": "last_12_months",
+    "group_by": ["audit_month"],
+    "filters": [],
+    "analysis_steps": ["drill_by_time"]
+  },
+  {
+    "intent": "descriptive",
+    "metric": "savings",
+    "time_range": "last_6_months",
+    "group_by": ["vendor"],
+    "filters": [],
+    "analysis_steps": ["rank_top_contributors"]
+  },
+  {
+    "intent": "descriptive",
+    "metric": "audits",
+    "time_range": "last_6_months",
+    "group_by": ["vendor"],
+    "filters": [],
+    "analysis_steps": ["rank_top_contributors"]
+  },
+  {
+    "intent": "descriptive",
+    "metric": "savings",
+    "time_range": "last_6_months",
+    "group_by": ["vendor_savings"],
+    "filters": [],
+    "analysis_steps": []
+  },
+  {
+    "intent": "descriptive",
+    "metric": "savings",
+    "time_range": "last_3_months",
+    "group_by": ["category", "audit_type"],
+    "filters": [],
+    "analysis_steps": ["rank_top_contributors"]
+  },
+  {
+    "intent": "descriptive",
+    "metric": "audits",
+    "time_range": "last_3_months",
+    "group_by": ["category", "audit_type"],
+    "filters": [],
+    "analysis_steps": []
+  },
+  {
+    "intent": "descriptive",
+    "metric": "hitrate",
+    "time_range": "last_3_months",
+    "group_by": ["category"],
+    "filters": [],
+    "analysis_steps": []
+  },
+  {
+    "intent": "descriptive",
+    "metric": "audits",
+    "time_range": "last_12_months",
+    "group_by": ["drg_code"],
+    "filters": [],
+    "analysis_steps": ["rank_top_contributors"]
+  },
+  {
+    "intent": "descriptive",
+    "metric": "savings",
+    "time_range": "last_12_months",
+    "group_by": ["drg_code"],
+    "filters": [],
+    "analysis_steps": ["rank_top_contributors"]
+  },
+  {
+    "intent": "descriptive",
+    "metric": "hitrate",
+    "time_range": "last_12_months",
+    "group_by": ["drg_code"],
+    "filters": [],
+    "analysis_steps": []
+  },
+  {
+    "intent": "descriptive",
+    "metric": "savings",
+    "time_range": "last_12_months",
+    "group_by": ["pdx"],
+    "filters": [],
+    "analysis_steps": []
+  },
+  {
+    "intent": "descriptive",
+    "metric": "audits",
+    "time_range": "last_12_months",
+    "group_by": ["pdx"],
+    "filters": [],
+    "analysis_steps": []
+  },
+  {
+    "intent": "descriptive",
+    "metric": "savings",
+    "time_range": "last_6_months",
+    "group_by": ["prim_proc"],
+    "filters": [],
+    "analysis_steps": []
+  },
+  {
+    "intent": "descriptive",
+    "metric": "audits",
+    "time_range": "last_6_months",
+    "group_by": ["prim_proc"],
+    "filters": [],
+    "analysis_steps": []
+  },
+  {
+    "intent": "descriptive",
+    "metric": "savings",
+    "time_range": "last_12_months",
+    "group_by": ["discharge_cat"],
+    "filters": [],
+    "analysis_steps": []
+  },
+  {
+    "intent": "descriptive",
+    "metric": "audits",
+    "time_range": "last_12_months",
+    "group_by": ["discharge_cat"],
+    "filters": [],
+    "analysis_steps": []
+  },
+  {
+    "intent": "descriptive",
+    "metric": "savings",
+    "time_range": "last_12_months",
+    "group_by": ["dischargestatuscode"],
+    "filters": [],
+    "analysis_steps": []
+  },
+  {
+    "intent": "descriptive",
+    "metric": "audits",
+    "time_range": "last_12_months",
+    "group_by": ["dischargestatuscode"],
+    "filters": [],
+    "analysis_steps": []
+  },
+  {
+    "intent": "descriptive",
+    "metric": "audits",
+    "time_range": "last_12_months",
+    "group_by": ["los"],
+    "filters": [],
+    "analysis_steps": []
+  },
+  {
+    "intent": "descriptive",
+    "metric": "savings",
+    "time_range": "last_12_months",
+    "group_by": ["los"],
+    "filters": [],
+    "analysis_steps": []
+  },
+  {
+    "intent": "descriptive",
+    "metric": "hitrate",
+    "time_range": "last_12_months",
+    "group_by": ["los"],
+    "filters": [],
+    "analysis_steps": []
+  },
+  {
+    "intent": "descriptive",
+    "metric": "audits",
+    "time_range": "last_6_months",
+    "group_by": ["cc_count"],
+    "filters": [],
+    "analysis_steps": []
+  },
+  {
+    "intent": "descriptive",
+    "metric": "audits",
+    "time_range": "last_6_months",
+    "group_by": ["mcc_count"],
+    "filters": [],
+    "analysis_steps": []
+  },
+  {
+    "intent": "descriptive",
+    "metric": "savings",
+    "time_range": "last_6_months",
+    "group_by": ["cc_count"],
+    "filters": [],
+    "analysis_steps": []
+  },
+  {
+    "intent": "descriptive",
+    "metric": "savings",
+    "time_range": "last_6_months",
+    "group_by": ["mcc_count"],
+    "filters": [],
+    "analysis_steps": []
+  },
+  {
+    "intent": "diagnostic",
+    "metric": "savings",
+    "time_range": "last_3_months",
+    "group_by": [],
+    "filters": [
+      {"field": "audit_type", "operator": "equals", "value": "MSDRG"}
+    ],
+    "analysis_steps": [
+      "compare_previous_period,
+      {\"check_secondary_metric\": \"audits\"},
+      {\"check_secondary_metric\": \"hitrate\"},
+      {\"drill_by_dimension\": \"audit_month\"},
+      {\"drill_by_dimension\": \"drg_desc\"}
+    ]
+  },
+  {
+    "intent": "diagnostic",
+    "metric": "savings",
+    "time_range": "last_3_months",
+    "group_by": [],
+    "filters": [
+      {"field": "category", "operator": "equals", "value": "IP"}
+    ],
+    "analysis_steps": [
+      "compare_previous_period",
+      {"check_secondary_metric": "audits"},
+      {"check_secondary_metric": "hitrate"},
+      {"drill_by_dimension": "provider_name"},
+      {"drill_by_dimension": "drg_desc"}
+    ]
+  },
+  {
+    "intent": "diagnostic",
+    "metric": "audits",
+    "time_range": "last_3_months",
+    "group_by": [],
+    "filters": [],
+    "analysis_steps": [
+      "compare_previous_period",
+      {"check_secondary_metric": "savings"},
+      {"drill_by_dimension": "audit_month"},
+      {"drill_by_dimension": "audit_type"},
+      {"drill_by_dimension": "provider_name"}
+    ]
+  },
+  {
+    "intent": "diagnostic",
+    "metric": "hitrate",
+    "time_range": "last_3_months",
+    "group_by": [],
+    "filters": [],
+    "analysis_steps": [
+      "compare_previous_period",
+      {"check_secondary_metric": "audits"},
+      {"check_secondary_metric": "savings"},
+      {"drill_by_dimension": "audit_month"},
+      {"drill_by_dimension": "provider_name"}
+    ]
+  },
+  {
+    "intent": "diagnostic",
+    "metric": "savings",
+    "time_range": "last_1_month",
+    "group_by": [],
+    "filters": [
+      {"field": "provider_name", "operator": "equals", "value": "XYZ MEDICAL CENTER"}
+    ],
+    "analysis_steps": [
+      "compare_previous_period",
+      {"check_secondary_metric": "audits"},
+      {"check_secondary_metric": "hitrate"},
+      {"drill_by_dimension": "drg_desc"}
+    ]
+  },
+  {
+    "intent": "diagnostic",
+    "metric": "savings",
+    "time_range": "last_6_months",
+    "group_by": [],
+    "filters": [
+      {"field": "audit_type", "operator": "equals", "value": "DRGCL"}
+    ],
+    "analysis_steps": [
+      "compare_previous_period",
+      {"check_secondary_metric": "audits"},
+      {"check_secondary_metric": "hitrate"},
+      {"drill_by_dimension": "audit_month"},
+      {"drill_by_dimension": "provider_name"}
+    ]
+  },
+  {
+    "intent": "diagnostic",
+    "metric": "audits",
+    "time_range": "last_6_months",
+    "group_by": [],
+    "filters": [
+      {"field": "category", "operator": "equals", "value": "OP"}
+    ],
+    "analysis_steps": [
+      "compare_previous_period",
+      {"check_secondary_metric": "savings"},
+      {"drill_by_dimension": "provider_name"},
+      {"drill_by_dimension": "drg_desc"}
+    ]
+  },
+  {
+    "intent": "diagnostic",
+    "metric": "hitrate",
+    "time_range": "last_6_months",
+    "group_by": [],
+    "filters": [
+      {"field": "audit_type", "operator": "equals", "value": "whole"}
+    ],
+    "analysis_steps": [
+      "compare_previous_period",
+      {"check_secondary_metric": "audits"},
+      {"check_secondary_metric": "savings"},
+      {"drill_by_dimension": "audit_month"},
+      {"drill_by_dimension": "drgconditiontype"}
+    ]
+  },
+  {
+    "intent": "diagnostic",
+    "metric": "savings",
+    "time_range": "last_12_months",
+    "group_by": [],
+    "filters": [
+      {"field": "mdcn", "operator": "equals", "value": "CARDIOLOGY"}
+    ],
+    "analysis_steps": [
+      "compare_previous_period",
+      {"check_secondary_metric": "audits"},
+      {"check_secondary_metric": "hitrate"},
+      {"drill_by_dimension": "drg_desc"}
+    ]
+  },
+  {
+    "intent": "diagnostic",
+    "metric": "savings",
+    "time_range": "last_12_months",
+    "group_by": [],
+    "filters": [
+      {"field": "drgconditiontype", "operator": "equals", "value": "MCC"}
+    ],
+    "analysis_steps": [
+      "compare_previous_period",
+      {"check_secondary_metric": "audits"},
+      {"check_secondary_metric": "hitrate"},
+      {"drill_by_dimension": "provider_name"},
+      {"drill_by_dimension": "drg_desc"}
+    ]
+  },
+  {
+    "intent": "diagnostic",
+    "metric": "audits",
+    "time_range": "last_12_months",
+    "group_by": [],
+    "filters": [
+      {"field": "drgconditiontype", "operator": "equals", "value": "CC"}
+    ],
+    "analysis_steps": [
+      "compare_previous_period",
+      {"check_secondary_metric": "savings"},
+      {"drill_by_dimension": "audit_month"},
+      {"drill_by_dimension": "provider_name"}
+    ]
+  },
+  {
+    "intent": "diagnostic",
+    "metric": "hitrate",
+    "time_range": "last_12_months",
+    "group_by": [],
+    "filters": [
+      {"field": "drgconditiontype", "operator": "equals", "value": "NON-CC"}
+    ],
+    "analysis_steps": [
+      "compare_previous_period",
+      {"check_secondary_metric": "audits"},
+      {"check_secondary_metric": "savings"},
+      {"drill_by_dimension": "audit_month"}
+    ]
+  },
+  {
+    "intent": "diagnostic",
+    "metric": "savings",
+    "time_range": "last_3_months",
+    "group_by": [],
+    "filters": [
+      {"field": "selectionreason", "operator": "equals", "value": "HIGH_LOS"}
+    ],
+    "analysis_steps": [
+      "compare_previous_period",
+      {"check_secondary_metric": "audits"},
+      {"check_secondary_metric": "hitrate"},
+      {"drill_by_dimension": "los"}
+    ]
+  },
+  {
+    "intent": "diagnostic",
+    "metric": "savings",
+    "time_range": "last_3_months",
+    "group_by": [],
+    "filters": [
+      {"field": "selectionreason", "operator": "equals", "value": "HIGH_COST"}
+    ],
+    "analysis_steps": [
+      "compare_previous_period",
+      {"check_secondary_metric": "audits"},
+      {"check_secondary_metric": "hitrate"},
+      {"drill_by_dimension": "totalpaidamount"}
+    ]
+  },
+  {
+    "intent": "diagnostic",
+    "metric": "audits",
+    "time_range": "last_3_months",
+    "group_by": [],
+    "filters": [
+      {"field": "selectionreason", "operator": "equals", "value": "DATA_MINING"}
+    ],
+    "analysis_steps": [
+      "compare_previous_period",
+      {"check_secondary_metric": "savings"},
+      {"drill_by_dimension": "provider_name"},
+      {"drill_by_dimension": "drg_code"}
+    ]
+  },
+  {
+    "intent": "diagnostic",
+    "metric": "savings",
+    "time_range": "last_6_months",
+    "group_by": [],
+    "filters": [
+      {"field": "audit_type", "operator": "equals", "value": "MSDRG"},
+      {"field": "category", "operator": "equals", "value": "IP"}
+    ],
+    "analysis_steps": [
+      "compare_previous_period",
+      {"check_secondary_metric": "audits"},
+      {"check_secondary_metric": "hitrate"},
+      {"drill_by_dimension": "audit_month"},
+      {"drill_by_dimension": "drg_desc"}
+    ]
+  },
+  {
+    "intent": "diagnostic",
+    "metric": "audits",
+    "time_range": "last_6_months",
+    "group_by": [],
+    "filters": [
+      {"field": "audit_type", "operator": "equals", "value": "DRGCL"},
+      {"field": "category", "operator": "equals", "value": "IP"}
+    ],
+    "analysis_steps": [
+      "compare_previous_period",
+      {"check_secondary_metric": "savings"},
+      {"drill_by_dimension": "audit_month"},
+      {"drill_by_dimension": "provider_name"}
+    ]
+  },
+  {
+    "intent": "diagnostic",
+    "metric": "hitrate",
+    "time_range": "last_6_months",
+    "group_by": [],
+    "filters": [
+      {"field": "audit_type", "operator": "equals", "value": "whole"},
+      {"field": "category", "operator": "equals", "value": "IP"}
+    ],
+    "analysis_steps": [
+      "compare_previous_period",
+      {"check_secondary_metric": "audits"},
+      {"check_secondary_metric": "savings"},
+      {"drill_by_dimension": "audit_month"},
+      {"drill_by_dimension": "drgconditiontype"}
+    ]
+  },
+  {
+    "intent": "diagnostic",
+    "metric": "savings",
+    "time_range": "year_to_date",
+    "group_by": [],
+    "filters": [
+      {"field": "vendor", "operator": "equals", "value": "VENDOR_A"}
+    ],
+    "analysis_steps": [
+      "compare_previous_period",
+      {"check_secondary_metric": "audits"},
+      {"check_secondary_metric": "hitrate"},
+      {"drill_by_dimension": "audit_month"},
+      {"drill_by_dimension": "drg_desc"}
+    ]
+  },
+  {
+    "intent": "diagnostic",
+    "metric": "audits",
+    "time_range": "year_to_date",
+    "group_by": [],
+    "filters": [
+      {"field": "vendor", "operator": "equals", "value": "VENDOR_B"}
+    ],
+    "analysis_steps": [
+      "compare_previous_period",
+      {"check_secondary_metric": "savings"},
+      {"drill_by_dimension": "audit_month"},
+      {"drill_by_dimension": "provider_name"}
+    ]
+  },
+  {
+    "intent": "diagnostic",
+    "metric": "hitrate",
+    "time_range": "year_to_date",
+    "group_by": [],
+    "filters": [
+      {"field": "vendor", "operator": "equals", "value": "VENDOR_C"}
+    ],
+    "analysis_steps": [
+      "compare_previous_period",
+      {"check_secondary_metric": "audits"},
+      {"check_secondary_metric": "savings"},
+      {"drill_by_dimension": "audit_month"}
+    ]
+  },
+  {
+    "intent": "descriptive",
+    "metric": "savings",
+    "time_range": "last_12_months",
+    "group_by": ["selectionmonth", "audit_type"],
+    "filters": [],
+    "analysis_steps": ["drill_by_time"]
+  },
+  {
+    "intent": "descriptive",
+    "metric": "audits",
+    "time_range": "last_12_months",
+    "group_by": ["selectionmonth", "audit_type"],
+    "filters": [],
+    "analysis_steps": ["drill_by_time"]
+  },
+  {
+    "intent": "descriptive",
+    "metric": "hitrate",
+    "time_range": "last_12_months",
+    "group_by": ["selectionmonth"],
+    "filters": [],
+    "analysis_steps": ["drill_by_time"]
+  },
+  {
+    "intent": "descriptive",
+    "metric": "savings",
+    "time_range": "last_12_months",
+    "group_by": ["provider_name", "audit_type"],
+    "filters": [],
+    "analysis_steps": ["rank_top_contributors"]
+  },
+  {
+    "intent": "descriptive",
+    "metric": "audits",
+    "time_range": "last_12_months",
+    "group_by": ["provider_name", "audit_type"],
+    "filters": [],
+    "analysis_steps": ["rank_top_contributors"]
+  },
+  {
+    "intent": "descriptive",
+    "metric": "hitrate",
+    "time_range": "last_12_months",
+    "group_by": ["provider_name", "audit_type"],
+    "filters": [],
+    "analysis_steps": []
+  },
+  {
+    "intent": "descriptive",
+    "metric": "savings",
+    "time_range": "last_1_month",
+    "group_by": ["drg_desc", "provider_name"],
+    "filters": [],
+    "analysis_steps": ["rank_top_contributors"]
+  },
+  {
+    "intent": "descriptive",
+    "metric": "audits",
+    "time_range": "last_1_month",
+    "group_by": ["drg_desc", "provider_name"],
+    "filters": [],
+    "analysis_steps": ["rank_top_contributors"]
+  },
+  {
+    "intent": "descriptive",
+    "metric": "savings",
+    "time_range": "last_1_month",
+    "group_by": ["selectionreason", "provider_name"],
+    "filters": [],
+    "analysis_steps": []
+  },
+  {
+    "intent": "descriptive",
+    "metric": "audits",
+    "time_range": "last_1_month",
+    "group_by": ["selectionreason", "provider_name"],
+    "filters": [],
+    "analysis_steps": []
+  },
+  {
+    "intent": "diagnostic",
+    "metric": "savings",
+    "time_range": "last_1_month",
+    "group_by": [],
+    "filters": [
+      {"field": "audit_type", "operator": "equals", "value": "MSDRG"},
+      {"field": "provider_name", "operator": "equals", "value": "ABC HOSPITAL"}
+    ],
+    "analysis_steps": [
+      "compare_previous_period",
+      {"check_secondary_metric": "audits"},
+      {"check_secondary_metric": "hitrate"},
+      {"drill_by_dimension": "drg_desc"}
+    ]
+  },
+  {
+    "intent": "diagnostic",
+    "metric": "audits",
+    "time_range": "last_1_month",
+    "group_by": [],
+    "filters": [
+      {"field": "audit_type", "operator": "equals", "value": "DRGCL"},
+      {"field": "provider_name", "operator": "equals", "value": "ABC HOSPITAL"}
+    ],
+    "analysis_steps": [
+      "compare_previous_period",
+      {"check_secondary_metric": "savings"},
+      {"drill_by_dimension": "drg_desc"}
+    ]
+  },
+  {
+    "intent": "diagnostic",
+    "metric": "hitrate",
+    "time_range": "last_1_month",
+    "group_by": [],
+    "filters": [
+      {"field": "audit_type", "operator": "equals", "value": "whole"},
+      {"field": "provider_name", "operator": "equals", "value": "ABC HOSPITAL"}
+    ],
+    "analysis_steps": [
+      "compare_previous_period",
+      {"check_secondary_metric": "audits"},
+      {"check_secondary_metric": "savings"},
+      {"drill_by_dimension": "drg_desc"}
+    ]
+  },
+  {
+    "intent": "descriptive",
+    "metric": "savings",
+    "time_range": "last_12_months",
+    "group_by": [],
+    "filters": [
+      {"field": "cod_decile", "operator": "greater_than_or_equals", "value": 8}
+    ],
+    "analysis_steps": []
+  },
+  {
+    "intent": "descriptive",
+    "metric": "audits",
+    "time_range": "last_12_months",
+    "group_by": [],
+    "filters": [
+      {"field": "cod_decile", "operator": "greater_than_or_equals", "value": 8}
+    ],
+    "analysis_steps": []
+  },
+  {
+    "intent": "descriptive",
+    "metric": "hitrate",
+    "time_range": "last_12_months",
+    "group_by": [],
+    "filters": [
+      {"field": "cod_decile", "operator": "greater_than_or_equals", "value": 8}
+    ],
+    "analysis_steps": []
+  },
+  {
+    "intent": "descriptive",
+    "metric": "savings",
+    "time_range": "last_12_months",
+    "group_by": [],
+    "filters": [
+      {"field": "cva_decile", "operator": "greater_than_or_equals", "value": 8}
+    ],
+    "analysis_steps": []
+  },
+  {
+    "intent": "descriptive",
+    "metric": "audits",
+    "time_range": "last_12_months",
+    "group_by": [],
+    "filters": [
+      {"field": "cva_decile", "operator": "greater_than_or_equals", "value": 8}
+    ],
+    "analysis_steps": []
+  },
+  {
+    "intent": "descriptive",
+    "metric": "hitrate",
+    "time_range": "last_12_months",
+    "group_by": [],
+    "filters": [
+      {"field": "cva_decile", "operator": "greater_than_or_equals", "value": 8}
+    ],
+    "analysis_steps": []
+  },
+  {
+    "intent": "descriptive",
+    "metric": "savings",
+    "time_range": "last_6_months",
+    "group_by": [],
+    "filters": [
+      {"field": "approved", "operator": "equals", "value": 1}
+    ],
+    "analysis_steps": []
+  },
+  {
+    "intent": "descriptive",
+    "metric": "savings",
+    "time_range": "last_6_months",
+    "group_by": [],
+    "filters": [
+      {"field": "rejected", "operator": "equals", "value": 1}
+    ],
+    "analysis_steps": []
+  },
+  {
+    "intent": "diagnostic",
+    "metric": "savings",
+    "time_range": "last_6_months",
+    "group_by": [],
+    "filters": [
+      {"field": "approved", "operator": "equals", "value": 1}
+    ],
+    "analysis_steps": [
+      "compare_previous_period",
+      {"check_secondary_metric": "audits"},
+      {"check_secondary_metric": "hitrate"},
+      {"drill_by_dimension": "provider_name"}
+    ]
+  },
+  {
+    "intent": "diagnostic",
+    "metric": "savings",
+    "time_range": "last_6_months",
+    "group_by": [],
+    "filters": [
+      {"field": "rejected", "operator": "equals", "value": 1}
+    ],
+    "analysis_steps": [
+      "compare_previous_period",
+      {"check_secondary_metric": "audits"},
+      {"check_secondary_metric": "hitrate"},
+      {"drill_by_dimension": "provider_name"}
+    ]
+  },
+  {
+    "intent": "descriptive",
+    "metric": "audits",
+    "time_range": "last_12_months",
+    "group_by": ["claimnumber"],
+    "filters": [],
+    "analysis_steps": []
+  }
+]
